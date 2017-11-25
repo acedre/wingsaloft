@@ -1,4 +1,15 @@
 <h1>Add Aircraft</h1>
+
+<% if @aircraft.errors.any?%>
+<h2>The following errors prevented from getting created</h2>
+<ul>
+	<% @aircraft.errors.full_messages.each do |msg| %>
+	<li>
+		<%= msg %>
+	</li>
+<%end%>
+</ul>
+<%end%>
 <%= form_for @aircraft do |f| %>
 	<p>
 		<%= f.label :aircraft_type%><br/>

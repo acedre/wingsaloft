@@ -10,8 +10,17 @@ class AircraftsController < ApplicationController
 
 	def create
 		@aircraft = Aircraft.new(aircraft_params)
-		@aircraft.save
-		redirect_to aircraft_path(@aircraft)
+		if @aircraft.save
+			flash[:notice] = "Article was successfully saved"
+			redirect_to aircraft_path(@aircraft)
+		else
+			render 'new'
+		end
+	end
+
+	def show
+		@aircraft = Aircraft.find(params[:id])
+		
 	end
 
 	private
